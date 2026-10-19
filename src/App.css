@@ -36,3 +36,157 @@
     transform: rotate(360deg);
   }
 }
+
+/* metronomo */
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #101522;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 24px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.metronomo {
+  width: 240px;
+  height: 300px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border-bottom: 14px solid #39445c;
+  border-left: 12px solid #39445c;
+  border-right: 12px solid #39445c;
+  border-radius: 100px 100px 18px 18px;
+  background: #1b2436;
+  clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+}
+
+.escala {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  height: 235px;
+  width: 6px;
+  transform: translateX(-50%);
+  background: #47536c;
+  border-radius: 10px;
+}
+
+.ponta {
+  position: absolute;
+  top: -3px;
+  left: -5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #64748b;
+}
+
+.pendulo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 210px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  transform-origin: top center;
+  transform: rotate(-30deg);
+}
+
+.pendulo.ativo {
+  animation: balancar 500ms ease-in-out infinite alternate;
+}
+
+.pendulo.esquerda {
+  --inicio: -30deg;
+  --fim: 30deg;
+}
+
+.pendulo.direita {
+  --inicio: -30deg;
+  --fim: 30deg;
+}
+
+@keyframes balancar {
+  from {
+    transform: rotate(var(--inicio));
+  }
+
+  to {
+    transform: rotate(var(--fim));
+  }
+}
+
+.peso {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #3b82f6;
+  box-shadow: 0 0 20px #3b82f655;
+}
+
+.controles {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.controles button,
+.botao-play {
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  background: #2563eb;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.controles button:hover,
+.botao-play:hover {
+  background: #3b82f6;
+}
+
+.bpm {
+  font-size: 24px;
+  min-width: 110px;
+  text-align: center;
+}
+
+input[type="range"] {
+  width: 240px;
+  accent-color: #3b82f6;
+  cursor: pointer;
+}
+
+.botao-play {
+  min-width: 180px;
+  font-size: 20px;
+}
+
+
+
