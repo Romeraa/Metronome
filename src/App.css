@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -32,13 +33,13 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-/* metronomo */
-
+/* METRÔNOMO */
 
 * {
   box-sizing: border-box;
@@ -65,6 +66,8 @@ h1 {
   font-size: 2.5rem;
 }
 
+/* Corpo do metrônomo */
+
 .metronomo {
   width: 240px;
   height: 300px;
@@ -72,13 +75,20 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
   border-bottom: 14px solid #39445c;
   border-left: 12px solid #39445c;
   border-right: 12px solid #39445c;
   border-radius: 100px 100px 18px 18px;
+
   background: #1b2436;
-  clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+
+  /* Mantém o pêndulo visível */
+  overflow: visible;
+  isolation: isolate;
 }
+
+/* Eixo central */
 
 .escala {
   position: absolute;
@@ -86,10 +96,16 @@ h1 {
   left: 50%;
   height: 235px;
   width: 6px;
+
   transform: translateX(-50%);
+
   background: #47536c;
   border-radius: 10px;
+
+  z-index: 1;
 }
+
+/* Ponto de articulação */
 
 .ponta {
   position: absolute;
@@ -97,21 +113,34 @@ h1 {
   left: -5px;
   width: 16px;
   height: 16px;
+
   border-radius: 50%;
   background: #64748b;
+
+  z-index: 3;
 }
+
+/* Pêndulo na frente do fundo */
 
 .pendulo {
   position: absolute;
   top: 0;
   left: 0;
+
   width: 6px;
   height: 210px;
+
   background: #e5e7eb;
   border-radius: 10px;
+
   transform-origin: top center;
   transform: rotate(-30deg);
+
+  /* Coloca o pêndulo na frente */
+  z-index: 2;
 }
+
+/* Animação do pêndulo */
 
 .pendulo.ativo {
   animation: balancar 500ms ease-in-out infinite alternate;
@@ -137,17 +166,26 @@ h1 {
   }
 }
 
+/* Peso do pêndulo */
+
 .peso {
   position: absolute;
   bottom: -12px;
   left: 50%;
+
   transform: translateX(-50%);
+
   width: 30px;
   height: 30px;
+
   border-radius: 50%;
   background: #3b82f6;
   box-shadow: 0 0 20px #3b82f655;
+
+  z-index: 4;
 }
+
+/* Controles de BPM */
 
 .controles {
   display: flex;
@@ -160,8 +198,10 @@ h1 {
   border: none;
   border-radius: 12px;
   padding: 14px 24px;
+
   background: #2563eb;
   color: white;
+
   font-size: 24px;
   cursor: pointer;
 }
@@ -171,11 +211,15 @@ h1 {
   background: #3b82f6;
 }
 
+/* Indicador de BPM */
+
 .bpm {
   font-size: 24px;
   min-width: 110px;
   text-align: center;
 }
+
+/* Controle deslizante */
 
 input[type="range"] {
   width: 240px;
@@ -183,10 +227,9 @@ input[type="range"] {
   cursor: pointer;
 }
 
+/* Botão iniciar/parar */
+
 .botao-play {
   min-width: 180px;
   font-size: 20px;
 }
-
-
-
